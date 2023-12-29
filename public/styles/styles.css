@@ -31,3 +31,7 @@
     align-items: center;
 }
 
+body {
+    justify-content: center;
+    text-align: center;
+  }
