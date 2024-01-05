@@ -1,0 +1,20 @@
+[
+     {
+          "first_name": "Frankiee",
+          "last_name":"Contreras",
+          "username":"frankiee@gmail.com",
+          "password":"password123"
+     },
+     {
+          "first_name": "Viggy",
+          "last_name":"Sam",
+          "username":"viggy@gmail.com",
+          "password":"password123"
+     },
+     {
+          "first_name": "Ricardo",
+          "last_name":"Torres",
+          "username":"ricardo@gmail.com",
+          "password":"password123"
+     }
+]

@@ -1,0 +1,37 @@
+[
+     {
+          "feed_date":"2023-01-04",
+          "pet_id":1,
+          "breakfast_food_type":"Dry",
+          "lunch_food_type":"Wet",
+          "dinner_food_type":"Both"
+     },
+     {
+          "feed_date":"2023-01-04",
+          "pet_id":2,
+          "breakfast_food_type":"Dry",
+          "lunch_food_type":"Wet",
+          "dinner_food_type":"Both"
+     },
+     {
+          "feed_date":"2023-01-04",
+          "pet_id":3,
+          "breakfast_food_type":"Wet",
+          "lunch_food_type":"Wet",
+          "dinner_food_type":"Wet"
+     },
+     {
+          "feed_date":"2023-01-04",
+          "pet_id":4,
+          "breakfast_food_type":"Dry",
+          "lunch_food_type":"Dry",
+          "dinner_food_type":"Dry"
+     },
+     {
+          "feed_date":"2023-01-04",
+          "pet_id":5,
+          "breakfast_food_type":"Both",
+          "lunch_food_type":"Both",
+          "dinner_food_type":"Both"
+     }
+]

@@ -25,22 +25,18 @@ Feeder.init(
                     key:'pet_id',
                },        
           },
-          pet_food_type: { // Wet, Dry and Both
+          breakfast_food_type: {
                type: DataTypes.STRING,
-               allowNull: false,
+               allowNull: true,
           },
-          breakfast: {
+          lunch_food_type: {
                type: DataTypes.STRING,
-               allowNull: false,
+               allowNull: true,
           },
-          lunch: {
+          dinner_food_type: {
                type: DataTypes.STRING,
-               allowNull: false,
+               allowNull: true,
           },
-          dinner: {
-               type: DataTypes.STRING,
-               allowNull: false,
-          }
      },
      {
           sequelize,
@@ -50,3 +46,5 @@ Feeder.init(
           modelName:'feeder',
      }
 );
+
+module.exports = Feeder;

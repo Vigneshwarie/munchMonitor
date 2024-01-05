@@ -10,6 +10,7 @@ class User extends Model {
           return bcrypt.compareSync(loginPw, this.password);
      }
 }
+
 // We will need first_name and last_name if we must display their name after login. If not we can remove that.
 User.init(
      {

@@ -17,7 +17,7 @@ Pet.init(
                type: DataTypes.STRING,
                allowNull:false,
           },
-          pet_type: { // Like Cat or Dog. We will implement the application for these categories and in the future it can be implemented for more pets. 
+          pet_type: { 
                type: DataTypes.STRING,
                allowNull:false,
           },
@@ -46,3 +46,5 @@ Pet.init(
           modelName:'pet',
      }
 );
+
+module.exports = Pet;

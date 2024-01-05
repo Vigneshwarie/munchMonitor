@@ -1,0 +1,37 @@
+[
+     {
+          "pet_name": "Nuggie Mushu",
+          "pet_type": "Cat",
+          "pet_sex":"Male",
+          "pet_notes": "Allergic to fish",
+          "pet_owner": 3
+     },
+     {
+          "pet_name": "Mo Snacks",
+          "pet_type": "Cat",
+          "pet_sex":"Female",
+          "pet_notes": "Allergic to fish",
+          "pet_owner": 3
+     },
+     {
+          "pet_name": "Lola",
+          "pet_type": "Dog",
+          "pet_sex":"Female",
+          "pet_notes": "Allergic to dairy",
+          "pet_owner": 1
+     },
+     {
+          "pet_name": "Holly",
+          "pet_type": "Dog",
+          "pet_sex":"Female",
+          "pet_notes": "Allergic to chicken",
+          "pet_owner": 1
+     },
+     {
+          "pet_name": "Molly",
+          "pet_type": "Dog",
+          "pet_sex":"Male",
+          "pet_notes": "Allergic to chicken",
+          "pet_owner": 2
+     }
+]
