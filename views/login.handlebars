@@ -1,8 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <title>The Munch Monitor</title>
+</head>
 
 <body>
+
+    <!--HERO IMAGE FOR HEADER-->
+    <section class="hero is-primary">
+        <div class="hero-body is-horizontal-center">
+            <p class="title">
+                <img src="./images/mmlogo1.png">
+            </p>
+            <p class="subtitle">
+            </p>
+        </div>
+    </section>
+
+    <br>
 
     <!--EMAIL/PASSWORD FORM-->
     <h2>
@@ -12,7 +32,7 @@
         <div class="notification is-primary">
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="Username">
+                    <input class="input" type="email" placeholder="E-mail">
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -31,8 +51,8 @@
             </div>
             <div class="field">
                 <p class="control">
-                    <button class="button is-success">
-                        Login
+                    <button class="button is-danger">
+                        <strong>Login</strong>
                     </button>
                 </p>
             </div>
@@ -49,9 +69,30 @@
     <!-- SIGN UP FORM-->
     <div class="container is-widescreen">
         <div class="notification is-primary">
+            <section class="names">
+                <div class="field-body">
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" type="text" placeholder="First Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" type="text" placeholder="Last Name">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                        </p>
+                    </div>
+            </section>
+            <div class="m-3"></div>
             <div class="field">
-                <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="text" placeholder="Username">
+                <p class="control has-icons-left has-icons-right ">
+                    <input class="input" type="email" placeholder="E-mail">
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -78,14 +119,13 @@
             </div>
             <div class="field is-horizontal-center">
                 <p class="control">
-                    <button class="button is-success" id="signupbutton">
-                        Sign Up
+                    <button class="button is-danger" id="signupbutton">
+                        <strong>Sign Up</strong>
                     </button>
                 </p>
             </div>
         </div>
     </div>
-
 </body>
 
 </html>
