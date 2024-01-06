@@ -7,11 +7,11 @@ router.get('/', async( req, res) =>{
     res.render('login');
 });
 
-router.post('/login', async (req, res) => { 
+router.post('/', async (req, res) => { 
     try {
         const loginUserData = await User.findOne({
             where: {
-                username: req.body.email
+                username: req.body.signinemail
             }
         });
 
@@ -20,17 +20,20 @@ router.post('/login', async (req, res) => {
             return;
         }
 
-        const validPassword = await dbUserData.checkPassword(req.body.password);
+        const validPassword = await loginUserData.checkPassword(req.body.signinpass);
 
         if (!validPassword) {
             res.status(400).json({ "message": "You entered the wrong password" });
             return;
         }
-        res.render('homepage');
-
+        res.status(200).json({ user: loginUserData, message: 'You are now logged in!' });
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+router.get('/homepage', async (req, res) => {
+    res.render('homepage');
 });
 
 
