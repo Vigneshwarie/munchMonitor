@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Pet } = require('../models');
 
 const router = require('express').Router();
 
@@ -53,6 +53,37 @@ router.post('/signup', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+//Route to render the profile handlebar
+router.get('/profile', async (req, res) => {
+    res.render('profile');
+});
+
+//Route to render the scheduler handlebar
+router.get('/scheduler', async (req, res) => {
+    res.render('scheduler');
+});
+
+// Router to create a profile from front end
+router.post('/profile', async (req, res) => { 
+    try {
+        const createProfiledb = await Pet.create({
+            pet_name: req.body.petName,
+            pet_type: req.body.petType,
+            pet_sex: req.body.petSex,
+            pet_notes: req.body.petNotes,
+            pet_owner: req.body.petOwner,
+        });
+
+        res.status(200).json(createProfiledb);
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
+
+
+});
+
 
 
 module.exports = router;
