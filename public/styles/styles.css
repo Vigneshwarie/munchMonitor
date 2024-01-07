@@ -35,3 +35,8 @@ body {
     justify-content: center;
     text-align: center;
   }
+
+  .button {
+    background-color: #df4900;
+    color: white;
+  }
