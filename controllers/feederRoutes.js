@@ -2,12 +2,13 @@ const { User } = require('../models');
 
 const router = require('express').Router();
 
-
+// Router to display Login page
 router.get('/', async( req, res) =>{
     res.render('login');
 });
 
-router.post('/', async (req, res) => { 
+// Router to check whether the login user is valid user or not
+router.post('/login', async (req, res) => { 
     try {
         const loginUserData = await User.findOne({
             where: {
@@ -32,8 +33,25 @@ router.post('/', async (req, res) => {
     }
 });
 
+// Router for the homepage
 router.get('/homepage', async (req, res) => {
     res.render('homepage');
+});
+
+// Router for signup functionality
+router.post('/signup', async (req, res) => { 
+    try {
+        const createSignUpUser = await User.create({
+            first_name: req.body.firstName,
+            last_name: req.body.lastName,
+            username: req.body.username,
+            password: req.body.password,
+        });
+
+        res.status(200).json(createSignUpUser);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 
