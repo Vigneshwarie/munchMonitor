@@ -1,5 +1,6 @@
 const loginbutton = document.querySelector('#loginbutton');
 const signupbutton = document.querySelector('#signupbutton');
+const saveProfileBtn = document.querySelector('#saveProfileBtn');
 
 
 // Sign-in functionality
@@ -58,6 +59,29 @@ function comparePassword(password, confirmPassword) {
     }
 }
 
+const saveProfileHandler = async (event) => {
+    event.preventDefault();
+
+    const petName = document.querySelector('#petName').value.trim();
+    const petType = document.querySelector('#petType').value;
+    const petSex = document.querySelector('#petSex').value;
+    const petNotes = document.querySelector('#petNotes').value.trim();
+    const petOwner = 1;
+
+    if (petName && petType && petSex && petNotes) {
+        const response = await fetch('/profile', {
+            method: 'POST',
+            body: JSON.stringify({ petName, petType, petSex, petNotes, petOwner }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            window.location.replace('homepage');
+        } else {
+            alert('Failed to Create the Profile info!');
+        }
+    }
+};
 
 
 
@@ -68,4 +92,8 @@ if (loginbutton) {
 
 if (signupbutton) {
     signupbutton.addEventListener('click', registerSignUpUser);
+}
+
+if (saveProfileBtn) {
+    saveProfileBtn.addEventListener('click', saveProfileHandler);
 }
