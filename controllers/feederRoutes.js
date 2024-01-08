@@ -33,9 +33,19 @@ router.post('/login', async (req, res) => {
     }
 });
 
-// Router for the homepage
+// Router for the homepage and Router to get all the Pet profile info
 router.get('/homepage', async (req, res) => {
-    res.render('homepage');
+    try {
+        const petProfileData = await Pet.findAll({
+            where: {
+                pet_owner: 2,
+            }
+        });
+        const profileData = petProfileData.map(pet => pet.get({ plain: true })); 
+        res.render('homepage', {profileData});
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 // Router for signup functionality
@@ -80,9 +90,10 @@ router.post('/profile', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
-
-
 });
+
+
+
 
 
 

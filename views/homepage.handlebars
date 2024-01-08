@@ -24,18 +24,14 @@
             </tr>
         </thead>
         <tbody class="tablebody tablebodytext tabletextalign">
+            {{#each profileData as |pet| }}
             <tr>
-                <td>Nuggie Mushu</td>
-                <td>Cat</td>
-                <td>Male</td>
-                <td>Allergic to fish</td>
+                <td>{{{pet.pet_name}}}</td>
+                <td>{{{pet.pet_type}}}</td>
+                <td>{{{pet.pet_sex}}}</td>
+                <td>{{{pet.pet_notes}}}</td>
             </tr>
-            <tr>
-                <td>Satoru</td>
-                <td>Cat</td>
-                <td>Male</td>
-                <td>Loves fish</td>
-            </tr>
+            {{/each}}
         </tbody>
     </table>
 </section>
