@@ -66,12 +66,12 @@ const saveProfileHandler = async (event) => {
     const petType = document.querySelector('#petType').value;
     const petSex = document.querySelector('#petSex').value;
     const petNotes = document.querySelector('#petNotes').value.trim();
-    const petOwner = 1;
+    
 
     if (petName && petType && petSex && petNotes) {
         const response = await fetch('/profile', {
             method: 'POST',
-            body: JSON.stringify({ petName, petType, petSex, petNotes, petOwner }),
+            body: JSON.stringify({ petName, petType, petSex, petNotes }),
             headers: { 'Content-Type': 'application/json' },
         });
 
