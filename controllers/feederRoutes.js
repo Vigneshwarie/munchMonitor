@@ -27,7 +27,15 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ "message": "You entered the wrong password" });
             return;
         }
-        res.status(200).json({ user: loginUserData, message: 'You are now logged in!' });
+        
+
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            req.session.sessionUserId = loginUserData.dataValues.id;
+            req.session.sessionUserName = loginUserData.dataValues.first_name + " " + loginUserData.dataValues.last_name;
+            res.status(200).json({ user: loginUserData, message: 'You are now logged in!' });
+        });
+
     } catch (err) {
         res.status(500).json(err);
     }
@@ -38,11 +46,11 @@ router.get('/homepage', async (req, res) => {
     try {
         const petProfileData = await Pet.findAll({
             where: {
-                pet_owner: 2,
+                pet_owner: req.session.sessionUserId,
             }
         });
         const profileData = petProfileData.map(pet => pet.get({ plain: true })); 
-        res.render('homepage', {profileData});
+        res.render('homepage', {profileData, loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
     } catch (err) {
         res.status(500).json(err);
     }
@@ -58,7 +66,12 @@ router.post('/signup', async (req, res) => {
             password: req.body.password,
         });
 
-        res.status(200).json(createSignUpUser);
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            req.session.sessionUserId = createSignUpUser.dataValues.id;
+            req.session.sessionUserName = createSignUpUser.dataValues.first_name + " " + createSignUpUser.dataValues.last_name;
+            res.status(200).json({ user: createSignUpUser, message: 'You are now signed in!' });
+        });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -66,12 +79,12 @@ router.post('/signup', async (req, res) => {
 
 //Route to render the profile handlebar
 router.get('/profile', async (req, res) => {
-    res.render('profile');
+    res.render('profile', {loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
 });
 
 //Route to render the scheduler handlebar
 router.get('/scheduler', async (req, res) => {
-    res.render('scheduler');
+    res.render('scheduler', {loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
 });
 
 // Router to create a profile from front end
@@ -82,7 +95,7 @@ router.post('/profile', async (req, res) => {
             pet_type: req.body.petType,
             pet_sex: req.body.petSex,
             pet_notes: req.body.petNotes,
-            pet_owner: req.body.petOwner,
+            pet_owner: req.session.sessionUserId,
         });
 
         res.status(200).json(createProfiledb);

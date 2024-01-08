@@ -7,6 +7,7 @@ const sequelize = require('./config/connection');
 // Importing handlebars 
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
+const session = require('express-session');
 
 //Initialize the package
 const app = express();
@@ -15,6 +16,17 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+const sessionVariable = {
+     secret: 'Super secret secret',
+     cookie: {
+     maxAge: 24 * 60 * 60 * 1000,
+     },
+     resave: false,
+     saveUninitialized: true,
+};
+
+app.use(session(sessionVariable));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
