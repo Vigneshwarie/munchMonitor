@@ -40,3 +40,27 @@ body {
     background-color: #df4900;
     color: white;
   }
+
+  .tablebackground {
+    background-color: #00d1b2;
+    font-weight: bold;
+  }
+
+  .tablebody{
+    color: white;
+    font-weight: bold;
+  }
+
+  .tableheadtext {
+    font-size: x-large;
+
+  }
+
+  .tablebodytext {
+    font-size:large;
+
+  }
+
+  .tabletextalign {
+    text-align: left;
+  }
