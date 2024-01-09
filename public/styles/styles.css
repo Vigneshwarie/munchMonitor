@@ -52,15 +52,31 @@ body {
   }
 
   .tableheadtext {
-    font-size: x-large;
+    font-size: large;
 
   }
 
   .tablebodytext {
-    font-size:large;
+    font-size:medium;
+    flex-direction: column;
 
   }
 
   .tabletextalign {
     text-align: left;
+  }
+
+  .editpetbutton {
+   max-width: 100px;
+   max-height: 100px;
+  }
+
+  .deletepetbutton {
+   max-width: 100px;
+   max-height: 100px;
+  }
+
+  .feedschedulebutton {
+   max-width: 100px;
+   max-height: 100px;
   }
