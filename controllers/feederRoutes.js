@@ -87,6 +87,11 @@ router.get('/scheduler', async (req, res) => {
     res.render('scheduler', {loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
 });
 
+//Route to render the dev handlebar
+router.get('/dev', async (req, res) => {
+    res.render('dev', {loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
+});
+
 // Router to create a profile from front end
 router.post('/profile', async (req, res) => { 
     try {
