@@ -76,6 +76,7 @@ router.post('/signup', async (req, res) => {
             res.status(200).json({ user: createSignUpUser, message: 'You are now signed in!' });
         });
     } catch (err) {
+        console.log(err);
         res.status(500).json(err);
     }
 });
