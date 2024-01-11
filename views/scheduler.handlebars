@@ -1,34 +1,30 @@
+<section class="userbox pets">
+    <div class="tile is-parent">
+        <article class=" is-child notification is-primary m-2">
+            <p class="title">Hi</p>
+            <p class="subtitle">{{sessionUserName}}</p>
 
-    <section class="userbox pets">
-        <div class="tile is-parent">
-            <article class=" is-child notification is-primary m-2">
-                <p class="title">Hi</p>
-                <p class="subtitle">{{sessionUserName}}</p>
-                
-            </article>
-
-
-            <div class="tile is-vertical is-8 m-2">
-                <div class="tile">
-                    <div class="tile is-parent is-vertical">
-                        <article class="tile is-child notification is-primary">
-                            <p class="title">Pet</p>
-                            <p class="subtitle">{{petData.pet_name}}</p>
-                        </article>
-                    </div>
+        </article>
 
 
-                    <article class="tile is-child notification is-warning ">
-                        <p class="title">Notes</p>
-                        <p class="subtitle">{{petData.pet_notes}}</p>
-                    </article>
-                </div>
+
+        <div class="tile is-vertical is-10 m-1">
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child notification is-primary">
+                    <p class="title">Pets</p>
+                    <p class="subtitle">Pet names here</p>
+                </article>
+                <article class="tile is-child notification is-warning ">
+                    <p class="title">Notes</p>
+                    <p class="subtitle">Pet names here</p>
+                </article>
             </div>
+        </div>
+    </div>
 
 
-
-            <!--FOR FUTURE DEVELOPMENT (UPLOAD UR PIC)-->
-            <!-- <div class="file">
+    <!--FOR FUTURE DEVELOPMENT (UPLOAD UR PIC)-->
+    <!-- <div class="file">
             <label class="file-label">
                 <input class="file-input" type="file" name="Username">
                 <span class="file-cta">
@@ -41,68 +37,102 @@
                 </span>
             </label>
         </div> -->
-    </section>
+</section>
 
-    <div class="hero is-horizontal-center is-fluid">
-        <div class="notification is-primary">
-            <img src="images/feedingschedule.png" alt="Feeding Schedule">
+<div class="hero is-horizontal-center is-fluid">
+    <div class="notification is-primary">
+        <img src="images/feedingschedule.png" alt="Feeding Schedule">
+    </div>
+</div>
+
+<div class="block"></div>
+<h2><img src="images/bfast.png" alt="Breakfast"></h2>
+<!--Breakfast box-->
+
+<div class="box">
+    <section class="breakfast">
+
+
+        <div class="control">
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Wet Food
+            </label>
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Dry Food
+            </label>
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Both
+            </label>
         </div>
-    </div>
 
-    <div class="block"></div>
-    <h2><img src="images/bfast.png" alt="Breakfast"></h2>
-    <!--Breakfast box-->
+        <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
+        <div class="block"></div>
+    </section>
+</div>
 
-    <div class="box">
-        <section class="breakfast">
-            <button class="button is-primary is-rounded m-2">Wet Food</button>
-            <button class="button is-success is-rounded m-2">Dry Food</button>
-            <button class="button is-info is-rounded m-2">Both</button>
-            <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
-            <div class="block"></div>
-            <div class="control">
-                <textarea class="textarea" placeholder="Type of food/Time fed" disabled></textarea>
-            </div>
-        </section>
-    </div>
+<div class="block"></div>
+<h2><img src="images/lunch.png" alt="Lunch"></h2>
+<!--Lunch box-->
+<div class="box">
+    <section class="lunch">
 
-    <div class="block"></div>
-    <h2><img src="images/lunch.png" alt="Lunch"></h2>
-    <!--Lunch box-->
-    <div class="box">
-        <section class="lunch">
-            <button class="button is-primary is-rounded m-2">Wet Food</button>
-            <button class="button is-success is-rounded m-2">Dry Food</button>
-            <button class="button is-info is-rounded m-2">Both</button>
-            <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
-            <div class="block"></div>
-            <div class="control">
-                <textarea class="textarea" placeholder="Type of food/Time fed" disabled></textarea>
-            </div>
-        </section>
-    </div>
+        <div class="control">
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Wet Food
+            </label>
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Dry Food
+            </label>
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Both
+            </label>
+        </div>
 
-    <div class="block"></div>
-    <h2><img src="images/dinner.png" alt="Dinner"></h2>
-    <!--Dinner box-->
+        <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
+        <div class="block"></div>
 
-    <div class="box">
-        <section class="dinner">
-            <button class="button is-primary is-rounded m-2">Wet Food</button>
-            <button class="button is-success is-rounded m-2">Dry Food</button>
-            <button class="button is-info is-rounded m-2">Both</button>
-            <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
-            <div class="block"></div>
-            <div class="control">
-                <textarea class="textarea" placeholder="Type of food/Time fed" disabled></textarea>
-            </div>
-        </section>
-    </div>
+    </section>
+</div>
 
-    <div class="block"></div>
-    <button class="button is-horizontal-center is-danger is-outlined m-6">
-        <span><strong>CLEAR FORM / RESET</strong></span>
-        <span class="icon is-small">
-            <i class="fas fa-times"></i>
-        </span>
-    </button>
+<div class="block"></div>
+<h2><img src="images/dinner.png" alt="Dinner"></h2>
+<!--Dinner box-->
+
+<div class="box">
+    <section class="dinner">
+
+
+        <div class="control">
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Wet Food
+            </label>
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Dry Food
+            </label>
+            <label class="radio">
+                <input type="radio" name="rsvp">
+                Both
+            </label>
+        </div>
+
+        <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
+        <div class="block"></div>
+
+    </section>
+</div>
+
+<div class="block"></div>
+<button class="button is-horizontal-center is-danger is-outlined m-6">
+    <span><strong>CLEAR FORM / RESET</strong></span>
+    <span class="icon is-small">
+        <i class="fas fa-times"></i>
+    </span>
+</button>

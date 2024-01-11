@@ -80,9 +80,22 @@
 
     <div class="box">
         <section class="breakfast">
-            <button class="button is-primary is-rounded m-2">Wet Food</button>
-            <button class="button is-success is-rounded m-2">Dry Food</button>
-            <button class="button is-info is-rounded m-2">Both</button>
+
+            <div class="control">
+                <label class="radio">
+                  <input type="radio" name="rsvp">
+                  Wet Food
+                </label>
+                <label class="radio">
+                  <input type="radio" name="rsvp">
+                  Dry Food
+                </label>
+                <label class="radio" disabled>
+                  <input type="radio" name="rsvp">
+                  Both
+                </label>
+              </div>
+
             <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
             <div class="block"></div>
             <div class="control">
