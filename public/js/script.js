@@ -114,7 +114,7 @@ for (let i = 0; i < feedschedulebutton.length; i++) {
         var rowElement = event.currentTarget.parentElement.parentElement.parentElement;
         const petId = rowElement.getAttribute("id");
 
-         location.replace(`/scheduler/${petId}`);
+         location.replace(`/scheduler${petId}`);
 
     });
 

@@ -1,22 +1,19 @@
 <section class="userbox pets">
     <div class="tile is-parent">
         <article class=" is-child notification is-primary m-2">
-            <p class="title">Hi</p>
+            <p class="title">Hey,</p>
             <p class="subtitle">{{sessionUserName}}</p>
-
         </article>
-
-
 
         <div class="tile is-vertical is-10 m-1">
             <div class="tile is-parent is-vertical">
                 <article class="tile is-child notification is-primary">
-                    <p class="title">Pets</p>
-                    <p class="subtitle">Pet names here</p>
+                    <p class="title">Pet Name</p>
+                    <p class="subtitle">{{petData.pet_name}}</p>
                 </article>
                 <article class="tile is-child notification is-warning ">
                     <p class="title">Notes</p>
-                    <p class="subtitle">Pet names here</p>
+                    <p class="subtitle">{{petData.pet_notes}}</p>
                 </article>
             </div>
         </div>
@@ -41,59 +38,54 @@
 
 <div class="hero is-horizontal-center is-fluid">
     <div class="notification is-primary">
-        <img src="images/feedingschedule.png" alt="Feeding Schedule">
+        <img src="./images/feedingschedule.png" alt="Feeding Schedule">
     </div>
 </div>
 
 <div class="block"></div>
-<h2><img src="images/bfast.png" alt="Breakfast"></h2>
+<h2><img src="./images/bfast.png" alt="Breakfast"></h2>
 <!--Breakfast box-->
 
 <div class="box">
     <section class="breakfast">
-
-
         <div class="control">
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="breakfastfoodtype" value="Wet Food">
                 Wet Food
             </label>
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="breakfastfoodtype" value="Dry Food">
                 Dry Food
             </label>
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="breakfastfoodtype" value="Both">
                 Both
             </label>
         </div>
-
         <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
     </section>
 </div>
 
 <div class="block"></div>
-<h2><img src="images/lunch.png" alt="Lunch"></h2>
+<h2><img src="./images/lunch.png" alt="Lunch"></h2>
 <!--Lunch box-->
 <div class="box">
     <section class="lunch">
-
         <div class="control">
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="lunchfoodtype" value="Wet Food">
                 Wet Food
             </label>
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="lunchfoodtype" value="Dry Food">
                 Dry Food
             </label>
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="lunchfoodtype" value="Both">
                 Both
             </label>
         </div>
-
         <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
 
@@ -101,31 +93,27 @@
 </div>
 
 <div class="block"></div>
-<h2><img src="images/dinner.png" alt="Dinner"></h2>
+<h2><img src="./images/dinner.png" alt="Dinner"></h2>
 <!--Dinner box-->
 
 <div class="box">
     <section class="dinner">
-
-
         <div class="control">
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="dinnerfoodtype" value="Wet Food">
                 Wet Food
             </label>
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="dinnerfoodtype" value="Dry Food">
                 Dry Food
             </label>
             <label class="radio">
-                <input type="radio" name="rsvp">
+                <input type="radio" name="dinnerfoodtype" value="Both">
                 Both
             </label>
         </div>
-
         <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
-
     </section>
 </div>
 

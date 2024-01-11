@@ -28,7 +28,6 @@ router.post('/login', async (req, res) => {
             return;
         }
         
-
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.sessionUserId = loginUserData.dataValues.id;
@@ -87,7 +86,7 @@ router.get('/profile', async (req, res) => {
 });
 
 //Route to render the scheduler handlebar
-router.get('/scheduler/:petId', async (req, res) => {
+router.get('/scheduler:petId', async (req, res) => {
     try{
         const petFeederData = await Pet.findByPk(req.params.petId);
         const petData = petFeederData.get({ plain: true });
