@@ -59,12 +59,15 @@ router.get('/homepage', async (req, res) => {
 // Router for signup functionality
 router.post('/signup', async (req, res) => { 
     try {
+        console.log("User Details===", {...req.body});
         const createSignUpUser = await User.create({
             first_name: req.body.firstName,
             last_name: req.body.lastName,
             username: req.body.username,
             password: req.body.password,
         });
+
+        console.log("Created User");
 
         req.session.save(() => {
             req.session.loggedIn = true;
