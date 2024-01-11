@@ -83,8 +83,18 @@ router.get('/profile', async (req, res) => {
 });
 
 //Route to render the scheduler handlebar
-router.get('/scheduler', async (req, res) => {
-    res.render('scheduler', {loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
+router.get('/scheduler/:petId', async (req, res) => {
+    try{
+        console.log('pet',req.params.petId)
+        const petFeederData = await Pet.findByPk(req.params.petId);
+        console.log(petFeederData)
+        const petData = petFeederData.get({ plain: true });
+        console.log(petData)
+        res.render('scheduler', {loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
+    }
+    catch (err){
+        res.status(500).json(err);
+    }
 });
 
 //Route to render the dev handlebar

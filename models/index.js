@@ -8,6 +8,7 @@ Pet.belongsTo(User, {
 
 Feeder.belongsTo(Pet, {
      foreignKey: 'pet_id',
+     onDelete:'CASCADE',
 });
 
 User.hasMany(Pet, {
