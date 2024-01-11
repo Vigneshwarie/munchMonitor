@@ -15,7 +15,7 @@ Feeder.init(
           },
           feed_date: {
                type: DataTypes.DATEONLY,
-               allowNull: false,
+               allowNull: true,
           },
           pet_id: {
                type: DataTypes.INTEGER,
