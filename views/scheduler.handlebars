@@ -1,14 +1,14 @@
 <section class="userbox pets">
     <div class="tile is-parent">
         <article class=" is-child notification is-primary m-2">
-            <p class="title">Hey,</p>
+            <p class="title schedulerUserId" id={{sessionUserId}}>Hey,</p>
             <p class="subtitle">{{sessionUserName}}</p>
         </article>
 
         <div class="tile is-vertical is-10 m-1">
             <div class="tile is-parent is-vertical">
                 <article class="tile is-child notification is-primary">
-                    <p class="title">Pet Name</p>
+                    <p class="title schedulerPetId" id={{petData.pet_id}}>Pet Name</p>
                     <p class="subtitle">{{petData.pet_name}}</p>
                 </article>
                 <article class="tile is-child notification is-warning ">
@@ -62,7 +62,7 @@
                 Both
             </label>
         </div>
-        <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
+        <button class="breakfastbtn button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
     </section>
 </div>
@@ -86,7 +86,7 @@
                 Both
             </label>
         </div>
-        <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
+        <button class="lunchbtn button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
 
     </section>
@@ -112,7 +112,7 @@
                 Both
             </label>
         </div>
-        <button class="button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
+        <button class="dinnerbtn button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
     </section>
 </div>
