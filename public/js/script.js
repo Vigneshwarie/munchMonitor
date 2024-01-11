@@ -4,6 +4,7 @@ const saveProfileBtn = document.querySelector('#saveProfileBtn');
 const tablebodysection = document.querySelector('.tablebody');
 const deletepetbutton = document.querySelectorAll('.deletepetbutton');
 const feedschedulebutton = document.querySelectorAll('.feedschedulebutton');
+const cancelprofilebutton = document.querySelector('#cancelProfileBtn')
 
 // Sign-in functionality
 const checkLoginUser = async (event) => {
@@ -119,7 +120,9 @@ for (let i = 0; i < feedschedulebutton.length; i++) {
 
 }; 
 
-
+function cancelbuttonfunction(event){
+    window.location.replace("homepage")
+}
 
 
 if (loginbutton) {
@@ -133,3 +136,7 @@ if (signupbutton) {
 if (saveProfileBtn) {
     saveProfileBtn.addEventListener('click', saveProfileHandler);
 }
+
+if(cancelprofilebutton){
+    cancelprofilebutton.addEventListener('click', cancelbuttonfunction)
+};
