@@ -3,7 +3,7 @@ const signupbutton = document.querySelector('#signupbutton');
 const saveProfileBtn = document.querySelector('#saveProfileBtn');
 const tablebodysection = document.querySelector('.tablebody');
 const deletepetbutton = document.querySelectorAll('.deletepetbutton');
-
+const feedschedulebutton = document.querySelectorAll('.feedschedulebutton');
 
 // Sign-in functionality
 const checkLoginUser = async (event) => {
@@ -103,6 +103,17 @@ for (let i = 0; i < deletepetbutton.length; i++) {
             window.location.replace('homepage');
         }
 
+
+    });
+
+}; 
+for (let i = 0; i < feedschedulebutton.length; i++) { 
+    feedschedulebutton[i].addEventListener("click", async function (event) { 
+        event.preventDefault();
+        var rowElement = event.currentTarget.parentElement.parentElement.parentElement;
+        const petId = rowElement.getAttribute("id");
+
+         location.replace(`/scheduler/${petId}`);
 
     });
 
