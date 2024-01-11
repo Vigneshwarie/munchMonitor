@@ -1,4 +1,4 @@
-const { User, Pet } = require('../models');
+const { User, Pet, Feeder } = require('../models');
 
 const router = require('express').Router();
 
@@ -90,6 +90,7 @@ router.get('/scheduler:petId', async (req, res) => {
     try{
         const petFeederData = await Pet.findByPk(req.params.petId);
         const petData = petFeederData.get({ plain: true });
+        //const petData = petFeederData.map(pet => pet.get({ plain: true }));
         res.render('scheduler', {petData, loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
     }
     catch (err){
@@ -132,6 +133,38 @@ router.delete('/deletepet', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
     }
+});
+
+// Router to Save Pet Scheduler
+router.post('/scheduler', async (req, res) => { 
+    try {
+        console.log("Check==", req.body.petId);
+        const petFeederData = await Feeder.findOne({
+            where: {
+                pet_id: req.body.petId,
+                feed_date: new Date(),
+            }
+        });
+
+         console.log(petFeederData);
+
+        if (petFeederData === null) {
+            const feederDb = await Feeder.create({
+                feed_date: new Date(),
+                pet_id: req.body.petId,
+                breakfast_food_type: req.body.breakfastType,
+            });
+            console.log(feederDb);
+            res.status(200).json(feederDb);
+        } 
+
+        
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json(err);
+    }
+
 });
 
 
