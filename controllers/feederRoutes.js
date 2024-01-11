@@ -110,7 +110,19 @@ router.post('/profile', async (req, res) => {
     }
 });
 
-
+// Router to delete the Pet based on Id. Passing the Id in the body and not as params.
+router.delete('/deletepet', async (req, res) => {
+    try {
+        const deletePetDb = await Pet.destroy({ 
+            where: {
+                pet_id: req.body.petId,
+            }
+        });
+        res.status(200).json(deletePetDb);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 
