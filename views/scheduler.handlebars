@@ -1,19 +1,10 @@
-<strong>feeder schedule page</strong>
-
-
-    <!-- <br>
-
-    <div class="block"></div>
-    <br> -->
 
     <section class="userbox pets">
         <div class="tile is-parent">
             <article class=" is-child notification is-primary m-2">
-                <p class="title">Username</p>
-                <p class="subtitle"></p>
-                <figure class="image is-4by3">
-                    <img src="./images/mmAvatar.png">
-                </figure>
+                <p class="title">Hi</p>
+                <p class="subtitle">{{sessionUserName}}</p>
+                
             </article>
 
 
@@ -21,15 +12,15 @@
                 <div class="tile">
                     <div class="tile is-parent is-vertical">
                         <article class="tile is-child notification is-primary">
-                            <p class="title">Pets</p>
-                            <p class="subtitle">Pet names here</p>
+                            <p class="title">Pet</p>
+                            <p class="subtitle">{{petData.pet_name}}</p>
                         </article>
                     </div>
 
 
                     <article class="tile is-child notification is-warning ">
                         <p class="title">Notes</p>
-                        <p class="subtitle">Pet names here</p>
+                        <p class="subtitle">{{petData.pet_notes}}</p>
                     </article>
                 </div>
             </div>
