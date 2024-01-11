@@ -1,6 +1,8 @@
 const loginbutton = document.querySelector('#loginbutton');
 const signupbutton = document.querySelector('#signupbutton');
 const saveProfileBtn = document.querySelector('#saveProfileBtn');
+const tablebodysection = document.querySelector('.tablebody');
+const deletepetbutton = document.querySelectorAll('.deletepetbutton');
 
 
 // Sign-in functionality
@@ -82,6 +84,29 @@ const saveProfileHandler = async (event) => {
         }
     }
 };
+
+
+for (let i = 0; i < deletepetbutton.length; i++) { 
+    deletepetbutton[i].addEventListener("click", async function (event) { 
+        event.preventDefault();
+        var rowElement = event.currentTarget.parentElement.parentElement.parentElement;
+        const petId = rowElement.getAttribute("id");
+
+        const response = await fetch('/deletepet', {
+            method: 'DELETE',
+            body: JSON.stringify({ petId }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            alert('Pet Id# ' + petId + ' is deleted');
+            window.location.replace('homepage');
+        }
+
+
+    });
+
+}; 
 
 
 

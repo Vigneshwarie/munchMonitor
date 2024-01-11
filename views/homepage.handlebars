@@ -23,7 +23,7 @@
         </thead>
         <tbody class="tablebody tablebodytext tabletextalign">
             {{#each profileData as |pet| }}
-            <tr>
+            <tr id={{{pet.pet_id}}}>
                 <td>{{{pet.pet_name}}}</td>
                 <td>{{{pet.pet_type}}}</td>
                 <td>{{{pet.pet_sex}}}</td>
