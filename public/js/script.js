@@ -134,6 +134,18 @@ const savebreakfastfunction = async (event) => {
     console.log("food type==", breakfastType);
     console.log("User==", userId);
     console.log("Pet===", petId);
+
+    if (breakfastType && userId && petId) {
+        const response = await fetch('/scheduler', {
+            method: 'POST',
+            body: JSON.stringify({ petId, breakfastType }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            location.replace(`/scheduler${petId}`);
+        }
+    } 
    
 }
 
