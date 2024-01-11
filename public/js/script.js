@@ -4,7 +4,10 @@ const saveProfileBtn = document.querySelector('#saveProfileBtn');
 const tablebodysection = document.querySelector('.tablebody');
 const deletepetbutton = document.querySelectorAll('.deletepetbutton');
 const feedschedulebutton = document.querySelectorAll('.feedschedulebutton');
-const cancelprofilebutton = document.querySelector('#cancelProfileBtn')
+const cancelprofilebutton = document.querySelector('#cancelProfileBtn');
+const breakfastbtn = document.querySelector('.breakfastbtn');
+const lunchbtn = document.querySelector('.lunchbtn');
+const dinnerbtn = document.querySelector('.dinnerbtn');
 
 // Sign-in functionality
 const checkLoginUser = async (event) => {
@@ -52,7 +55,7 @@ const registerSignUpUser = async (event) => {
     }
 };
 
-
+// Function to compare password
 function comparePassword(password, confirmPassword) {
     if (password === confirmPassword) {
         return true;
@@ -62,6 +65,7 @@ function comparePassword(password, confirmPassword) {
     }
 }
 
+// Function to save the Pet Profile
 const saveProfileHandler = async (event) => {
     event.preventDefault();
 
@@ -70,7 +74,6 @@ const saveProfileHandler = async (event) => {
     const petSex = document.querySelector('#petSex').value;
     const petNotes = document.querySelector('#petNotes').value.trim();
     
-
     if (petName && petType && petSex && petNotes) {
         const response = await fetch('/profile', {
             method: 'POST',
@@ -86,7 +89,7 @@ const saveProfileHandler = async (event) => {
     }
 };
 
-
+// Loop to add delete event listener for all listed profile and delete functionality
 for (let i = 0; i < deletepetbutton.length; i++) { 
     deletepetbutton[i].addEventListener("click", async function (event) { 
         event.preventDefault();
@@ -103,27 +106,36 @@ for (let i = 0; i < deletepetbutton.length; i++) {
             alert('Pet Id# ' + petId + ' is deleted');
             window.location.replace('homepage');
         }
-
-
     });
-
 }; 
+
+// Loop to add get the Pet id from all listed pet profile and navigate to the scheduler form
 for (let i = 0; i < feedschedulebutton.length; i++) { 
     feedschedulebutton[i].addEventListener("click", async function (event) { 
         event.preventDefault();
         var rowElement = event.currentTarget.parentElement.parentElement.parentElement;
         const petId = rowElement.getAttribute("id");
-
          location.replace(`/scheduler${petId}`);
-
     });
-
 }; 
 
-function cancelbuttonfunction(event){
+// Function for Cancel button
+function cancelbuttonfunction(event) {
     window.location.replace("homepage")
 }
 
+const savebreakfastfunction = async (event) => {
+    event.preventDefault();
+    const breakfastType = document.querySelector('input[name="breakfastfoodtype"]:checked').value;
+    const userTitleElement = document.querySelector('.schedulerUserId');
+    const userId = userTitleElement.getAttribute("id");
+    const petTitleElement = document.querySelector('.schedulerPetId');
+    const petId = petTitleElement.getAttribute("id");
+    console.log("food type==", breakfastType);
+    console.log("User==", userId);
+    console.log("Pet===", petId);
+   
+}
 
 if (loginbutton) {
     loginbutton.addEventListener('click', checkLoginUser);
@@ -140,3 +152,7 @@ if (saveProfileBtn) {
 if(cancelprofilebutton){
     cancelprofilebutton.addEventListener('click', cancelbuttonfunction)
 };
+
+if (breakfastbtn) {
+    breakfastbtn.addEventListener('click', savebreakfastfunction);
+}
