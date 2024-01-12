@@ -136,6 +136,7 @@ router.delete('/deletepet', async (req, res) => {
 });
 
 // Router to Save Pet Scheduler
+// The functionality is half completed and still needs work
 router.post('/scheduler', async (req, res) => { 
     try {
         console.log("Check==", req.body.petId);
@@ -148,7 +149,7 @@ router.post('/scheduler', async (req, res) => {
 
          console.log("in seheduler===", petFeederData);
 
-        if (petFeederData === null) {
+        if (!petFeederData) {
             const feederDb = await Feeder.create({
                 feed_date: new Date(),
                 pet_id: req.body.petId,
