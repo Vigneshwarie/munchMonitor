@@ -146,7 +146,7 @@ router.post('/scheduler', async (req, res) => {
             }
         });
 
-         console.log(petFeederData);
+         console.log("in seheduler===", petFeederData);
 
         if (petFeederData === null) {
             const feederDb = await Feeder.create({
@@ -154,17 +154,53 @@ router.post('/scheduler', async (req, res) => {
                 pet_id: req.body.petId,
                 breakfast_food_type: req.body.breakfastType,
             });
-            console.log(feederDb);
+            console.log("in scheduler post ==", feederDb);
             res.status(200).json(feederDb);
-        } 
-
+        }
         
-
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
     }
+});
 
+
+
+//Route to render the edit pet handlebar
+router.get('/profile:petId', async (req, res) => {
+    try {
+        console.log("In edit==",req.params.petId);
+        const petData = await Pet.findByPk(req.params.petId);
+        console.log(petData);
+        const petfilteredData = petData.get({ plain: true });
+        console.log(petfilteredData);
+        //const petData = petFeederData.map(pet => pet.get({ plain: true }));
+        res.render('profile', {petfilteredData, loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
+    }
+    catch (err){
+        res.status(500).json(err);
+    }
+});
+
+// Router to update Pet
+router.put('/profile', async (req, res) => { 
+    try {
+        const updateProfiledb = await Pet.update(
+            {
+                pet_notes: req.body.petNotes
+            },
+            {
+                where: {
+                    pet_id: req.body.petId,
+                }
+            }
+        );
+
+        res.status(200).json(updateProfiledb);
+
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 

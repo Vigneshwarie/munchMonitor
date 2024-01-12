@@ -1,4 +1,31 @@
+{{#if petfilteredData}}
+
 <section class="column is-one-third container petform is-primary is-fluid m-5">
+        <div class="field">
+            <label class="label">Pet Name</label>
+            <div class="control profilepetid" id={{petfilteredData.pet_id}}>
+                <input class="input" type="text" placeholder="Pet's Name" id="petName" value={{petfilteredData.pet_name}} readonly>
+            </div>
+        </div>
+    
+        <div class="field is">
+            <label class="label">Notes</label>
+            <div class="control">
+                <textarea class="textarea" placeholder="Input notes here" id="petNotes">{{petfilteredData.pet_notes}}</textarea>
+            </div>
+        </div>
+    
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-danger" id="saveEditProfileBtn">Save</button>
+            </div>
+            <div class="control">
+                <button class="button is-link is-light" id="cancelProfileBtn">Cancel</button>
+            </div>
+        </div>
+    </section>
+    {{else}}
+    <section class="column is-one-third container petform is-primary is-fluid m-5">
         <div class="field">
             <label class="label">Pet Name</label>
             <div class="control">
@@ -48,3 +75,4 @@
             </div>
         </div>
     </section>
+{{/if}}

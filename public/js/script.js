@@ -8,6 +8,9 @@ const cancelprofilebutton = document.querySelector('#cancelProfileBtn');
 const breakfastbtn = document.querySelector('.breakfastbtn');
 const lunchbtn = document.querySelector('.lunchbtn');
 const dinnerbtn = document.querySelector('.dinnerbtn');
+const editpetbutton = document.querySelectorAll('.editpetbutton');
+
+const saveEditProfileBtn = document.querySelector('#saveEditProfileBtn');
 
 // Sign-in functionality
 const checkLoginUser = async (event) => {
@@ -89,6 +92,32 @@ const saveProfileHandler = async (event) => {
     }
 };
 
+// Functionality to update Pet profile
+const saveEditProfileHandler = async (event) => {
+    event.preventDefault();
+
+    const petName = document.querySelector('#petName').value.trim();
+    const petNotes = document.querySelector('#petNotes').value.trim();
+    const petIdElement = document.querySelector('.profilepetid');
+    const petId = petIdElement.getAttribute("id");
+
+    console.log(petId);
+    
+    if (petName && petNotes && petId) {
+        const response = await fetch('/profile', {
+            method: 'PUT',
+            body: JSON.stringify({ petName, petNotes, petId}),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            window.location.replace('homepage');
+        } else {
+            alert('Failed to Update the Profile info!');
+        }
+    } 
+};
+
 // Loop to add delete event listener for all listed profile and delete functionality
 for (let i = 0; i < deletepetbutton.length; i++) { 
     deletepetbutton[i].addEventListener("click", async function (event) { 
@@ -123,8 +152,20 @@ for (let i = 0; i < feedschedulebutton.length; i++) {
 
 // Function for Cancel button
 function cancelbuttonfunction(event) {
-    window.location.replace("homepage")
+    window.location.replace("homepage");
 }
+
+// Loop to add edit event listener for all listed profile and edit functionality
+for (let i = 0; i < editpetbutton.length; i++) { 
+    editpetbutton[i].addEventListener("click", async function (event) { 
+        event.preventDefault();
+        var rowElement = event.currentTarget.parentElement.parentElement.parentElement;
+        const petId = rowElement.getAttribute("id");
+        console.log(rowElement);
+        console.log(petId);
+        location.replace(`/profile${petId}`);
+    });
+}; 
 
 const savebreakfastfunction = async (event) => {
     event.preventDefault();
@@ -145,7 +186,8 @@ const savebreakfastfunction = async (event) => {
         });
 
         if (response.ok) {
-            location.replace(`/scheduler${petId}`);
+            //location.replace(`/scheduler${petId}`);
+            window.location.replace("homepage");
         }
     } 
    
@@ -169,4 +211,8 @@ if(cancelprofilebutton){
 
 if (breakfastbtn) {
     breakfastbtn.addEventListener('click', savebreakfastfunction);
+}
+
+if (saveEditProfileBtn) {
+    saveEditProfileBtn.addEventListener('click', saveEditProfileHandler);
 }
