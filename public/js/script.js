@@ -95,6 +95,8 @@ for (let i = 0; i < deletepetbutton.length; i++) {
         event.preventDefault();
         var rowElement = event.currentTarget.parentElement.parentElement.parentElement;
         const petId = rowElement.getAttribute("id");
+        console.log(rowElement);
+                console.log(petId);
 
         const response = await fetch('/deletepet', {
             method: 'DELETE',
