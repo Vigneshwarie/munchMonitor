@@ -146,7 +146,7 @@ for (let i = 0; i < feedschedulebutton.length; i++) {
         event.preventDefault();
         var rowElement = event.currentTarget.parentElement.parentElement.parentElement;
         const petId = rowElement.getAttribute("id");
-         location.replace(`/scheduler${petId}`);
+        location.replace(`/scheduler${petId}`);
     });
 }; 
 
@@ -167,6 +167,7 @@ for (let i = 0; i < editpetbutton.length; i++) {
     });
 }; 
 
+// Function to save breakfast food type
 const savebreakfastfunction = async (event) => {
     event.preventDefault();
     const breakfastType = document.querySelector('input[name="breakfastfoodtype"]:checked').value;
@@ -174,9 +175,6 @@ const savebreakfastfunction = async (event) => {
     const userId = userTitleElement.getAttribute("id");
     const petTitleElement = document.querySelector('.schedulerPetId');
     const petId = petTitleElement.getAttribute("id");
-    console.log("food type==", breakfastType);
-    console.log("User==", userId);
-    console.log("Pet===", petId);
 
     if (breakfastType && userId && petId) {
         const response = await fetch('/scheduler', {
@@ -186,12 +184,56 @@ const savebreakfastfunction = async (event) => {
         });
 
         if (response.ok) {
-            //location.replace(`/scheduler${petId}`);
             window.location.replace("homepage");
         }
-    } 
-   
-}
+    }
+};
+
+// Function to save lunch food type
+const savelunchfunction = async (event) => { 
+    event.preventDefault();
+    const lunchType = document.querySelector('input[name="lunchfoodtype"]:checked').value;
+    const userTitleElement = document.querySelector('.schedulerUserId');
+    const userId = userTitleElement.getAttribute("id");
+    const petTitleElement = document.querySelector('.schedulerPetId');
+    const petId = petTitleElement.getAttribute("id");
+
+    if (lunchType && userId && petId) {
+        const response = await fetch('/scheduler', {
+            method: 'POST',
+            body: JSON.stringify({ petId, lunchType }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            window.location.replace("homepage");
+        }
+    }
+};
+
+// Function to save dinner food type
+const savedinnerfunction = async (event) => { 
+    event.preventDefault();
+    const dinnerType = document.querySelector('input[name="dinnerfoodtype"]:checked').value;
+    const userTitleElement = document.querySelector('.schedulerUserId');
+    const userId = userTitleElement.getAttribute("id");
+    const petTitleElement = document.querySelector('.schedulerPetId');
+    const petId = petTitleElement.getAttribute("id");
+
+    if (dinnerType && userId && petId) {
+        const response = await fetch('/scheduler', {
+            method: 'POST',
+            body: JSON.stringify({ petId, dinnerType }),
+            headers: { 'Content-Type': 'application/json' },
+        });
+
+        if (response.ok) {
+            window.location.replace("homepage");
+        }
+    }
+};
+
+
 
 if (loginbutton) {
     loginbutton.addEventListener('click', checkLoginUser);
@@ -215,4 +257,12 @@ if (breakfastbtn) {
 
 if (saveEditProfileBtn) {
     saveEditProfileBtn.addEventListener('click', saveEditProfileHandler);
+}
+
+if (lunchbtn) {
+    lunchbtn.addEventListener('click', savelunchfunction);
+}
+
+if (dinnerbtn) {
+    dinnerbtn.addEventListener('click', savedinnerfunction);
 }
