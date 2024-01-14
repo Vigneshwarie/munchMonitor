@@ -139,7 +139,6 @@ router.delete('/deletepet', async (req, res) => {
 // The functionality is half completed and still needs work
 router.post('/scheduler', async (req, res) => { 
     try {
-        console.log("Check==", req.body.petId);
         const petFeederData = await Feeder.findOne({
             where: {
                 pet_id: req.body.petId,
@@ -147,18 +146,77 @@ router.post('/scheduler', async (req, res) => {
             }
         });
 
-         console.log("in seheduler===", petFeederData);
-
         if (!petFeederData) {
-            const feederDb = await Feeder.create({
-                feed_date: new Date(),
-                pet_id: req.body.petId,
-                breakfast_food_type: req.body.breakfastType,
-            });
-            console.log("in scheduler post ==", feederDb);
-            res.status(200).json(feederDb);
-        }
-        
+            console.log('in if');
+            if (req.body.breakfastType) {
+                const feederDb = await Feeder.create({
+                    feed_date: new Date(),
+                    pet_id: req.body.petId,
+                    breakfast_food_type: req.body.breakfastType,
+                });
+                res.status(200).json(feederDb);
+            }
+            if (req.body.lunchType) {
+                const feederDb = await Feeder.create({
+                    feed_date: new Date(),
+                    pet_id: req.body.petId,
+                    lunch_food_type: req.body.lunchType,
+                });
+                res.status(200).json(feederDb);
+            }
+            if (req.body.dinnerType) {
+                const feederDb = await Feeder.create({
+                    feed_date: new Date(),
+                    pet_id: req.body.petId,
+                    dinner_food_type: req.body.dinnerType,
+                });
+                res.status(200).json(feederDb);
+            }
+        } else {
+            console.log('in else');
+            if (req.body.breakfastType) {
+                const feederDb = await Feeder.update(
+                    {
+                        breakfast_food_type: req.body.breakfastType
+                    },
+                    {
+                        where: {
+                            pet_id: req.body.petId,
+                            feed_date: new Date()
+                        }
+                    }
+                );
+                res.status(200).json(feederDb);
+            }
+            if (req.body.lunchType) {
+                const feederDb = await Feeder.update(
+                    {
+                        lunch_food_type: req.body.lunchType
+                    },
+                    {
+                        where: {
+                            pet_id: req.body.petId,
+                            feed_date: new Date()
+                        }
+                    }
+                );
+                res.status(200).json(feederDb);
+            }
+            if (req.body.dinnerType) {
+                const feederDb = await Feeder.update(
+                    {
+                        dinner_food_type: req.body.dinnerType
+                    },
+                    {
+                        where: {
+                            pet_id: req.body.petId,
+                            feed_date: new Date()
+                        }
+                    }
+                );
+                res.status(200).json(feederDb);
+            }
+        } 
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
