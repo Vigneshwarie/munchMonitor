@@ -49,18 +49,41 @@
 <div class="box">
     <section class="breakfast">
         <div class="control">
+            {{#ifcondition feederFilteredData.breakfast_food_type "Wet Food"}}
             <label class="radio">
-                <input type="radio" name="breakfastfoodtype" value="Wet Food">
+                <input type="radio" name="breakfastfoodtype" value="Wet Food" checked="checked">
                 Wet Food
             </label>
+            {{else}}    
+              <label class="radio">
+                <input type="radio" name="breakfastfoodtype" value="Wet Food">
+                Wet Food
+            </label>  
+            {{/ifcondition}}
+
+            {{#ifcondition feederFilteredData.breakfast_food_type "Dry Food"}}
+            <label class="radio">
+                <input type="radio" name="breakfastfoodtype" value="Dry Food" checked="checked">
+                Dry Food
+            </label>
+            {{else}}
             <label class="radio">
                 <input type="radio" name="breakfastfoodtype" value="Dry Food">
                 Dry Food
             </label>
+            {{/ifcondition}}
+
+            {{#ifcondition feederFilteredData.breakfast_food_type "Both"}}
             <label class="radio">
+                <input type="radio" name="breakfastfoodtype" value="Both" checked="checked">
+                Both
+            </label>
+            {{else}}
+             <label class="radio">
                 <input type="radio" name="breakfastfoodtype" value="Both">
                 Both
             </label>
+            {{/ifcondition}}
         </div>
         <button class="breakfastbtn button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
@@ -73,22 +96,44 @@
 <div class="box">
     <section class="lunch">
         <div class="control">
+            {{#ifcondition feederFilteredData.lunch_food_type "Wet Food"}}
             <label class="radio">
+                <input type="radio" name="lunchfoodtype" value="Wet Food" checked="checked">
+                Wet Food
+            </label>
+            {{else}}
+              <label class="radio">
                 <input type="radio" name="lunchfoodtype" value="Wet Food">
                 Wet Food
             </label>
+            {{/ifcondition}}
+
+            {{#ifcondition feederFilteredData.lunch_food_type "Dry Food"}}
+            <label class="radio">
+                <input type="radio" name="lunchfoodtype" value="Dry Food" checked="checked">
+                Dry Food
+            </label>
+            {{else}}
             <label class="radio">
                 <input type="radio" name="lunchfoodtype" value="Dry Food">
                 Dry Food
             </label>
+            {{/ifcondition}}
+
+            {{#ifcondition feederFilteredData.lunch_food_type "Both"}}
+            <label class="radio">
+                <input type="radio" name="lunchfoodtype" value="Both" checked="checked">
+                Both
+            </label>
+            {{else}}
             <label class="radio">
                 <input type="radio" name="lunchfoodtype" value="Both">
                 Both
             </label>
+            {{/ifcondition}}
         </div>
         <button class="lunchbtn button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>
-
     </section>
 </div>
 
@@ -99,18 +144,42 @@
 <div class="box">
     <section class="dinner">
         <div class="control">
+            {{#ifcondition feederFilteredData.dinner_food_type "Wet Food"}}
             <label class="radio">
+                <input type="radio" name="dinnerfoodtype" value="Wet Food" checked="checked">
+                Wet Food
+            </label>
+            {{else}}
+             <label class="radio">
                 <input type="radio" name="dinnerfoodtype" value="Wet Food">
                 Wet Food
             </label>
+            {{/ifcondition}}
+
+            {{#ifcondition feederFilteredData.dinner_food_type "Dry Food"}}
             <label class="radio">
+                <input type="radio" name="dinnerfoodtype" value="Dry Food" checked="checked">
+                Dry Food
+            </label>
+            {{else}}
+             <label class="radio">
                 <input type="radio" name="dinnerfoodtype" value="Dry Food">
                 Dry Food
             </label>
+            {{/ifcondition}}
+
+            {{#ifcondition feederFilteredData.dinner_food_type "Both"}}
+            <label class="radio">
+                <input type="radio" name="dinnerfoodtype" value="Both" checked="checked">
+                Both
+            </label>
+            {{else}}
             <label class="radio">
                 <input type="radio" name="dinnerfoodtype" value="Both">
                 Both
             </label>
+            {{/ifcondition}}
+            
         </div>
         <button class="dinnerbtn button buttontimestamp is-success is-rounded is-danger m-2">Confirm Feeding</button>
         <div class="block"></div>

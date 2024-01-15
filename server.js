@@ -5,9 +5,12 @@ const routes = require('./controllers');
 //Import sequelize package
 const sequelize = require('./config/connection');
 // Importing handlebars 
+//const helpers = require('./utils/helpers');
 const exphbs = require('express-handlebars');
 const hbs = exphbs.create({});
 const session = require('express-session');
+
+
 
 //Initialize the package
 const app = express();
@@ -30,6 +33,15 @@ app.use(session(sessionVariable));
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+var handlebars = require('handlebars');
+
+// Referred this function as helper from the link: https://stackoverflow.com/questions/47681668/handlebars-if-else-if-else-with-string-equality-function
+handlebars.registerHelper('ifcondition', function(a, b, opts) {
+     if(a == b) 
+          return opts.fn(this);
+     else
+          return opts.inverse(this);
+}); 
 
 // Define the port
 const PORT = process.env.PORT || 3001;
