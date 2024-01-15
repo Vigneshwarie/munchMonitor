@@ -58,7 +58,7 @@ router.get('/homepage', async (req, res) => {
 // Router for signup functionality
 router.post('/signup', async (req, res) => { 
     try {
-        console.log("User Details===", {...req.body});
+        //console.log("User Details===", {...req.body});
         const createSignUpUser = await User.create({
             first_name: req.body.firstName,
             last_name: req.body.lastName,
@@ -66,8 +66,7 @@ router.post('/signup', async (req, res) => {
             password: req.body.password,
         });
 
-        console.log("Created User");
-
+        //console.log("Created User");
         req.session.save(() => {
             req.session.loggedIn = true;
             req.session.sessionUserId = createSignUpUser.dataValues.id;
@@ -91,7 +90,20 @@ router.get('/scheduler:petId', async (req, res) => {
         const petFeederData = await Pet.findByPk(req.params.petId);
         const petData = petFeederData.get({ plain: true });
         //const petData = petFeederData.map(pet => pet.get({ plain: true }));
-        res.render('scheduler', {petData, loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
+
+        const feederData = await Feeder.findOne({
+            where: {
+                pet_id: req.params.petId,
+                feed_date: new Date(),
+            }
+        });
+
+        if (feederData) {
+            const feederFilteredData = feederData.get({ plain: true }); 
+            res.render('scheduler', {petData, feederFilteredData, loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
+        } else {
+            res.render('scheduler', {petData, loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
+        }
     }
     catch (err){
         res.status(500).json(err);
@@ -135,8 +147,7 @@ router.delete('/deletepet', async (req, res) => {
     }
 });
 
-// Router to Save Pet Scheduler
-// The functionality is half completed and still needs work
+// Router to Save Pet Scheduler. Added functionality to save and update
 router.post('/scheduler', async (req, res) => { 
     try {
         const petFeederData = await Feeder.findOne({
@@ -147,7 +158,6 @@ router.post('/scheduler', async (req, res) => {
         });
 
         if (!petFeederData) {
-            console.log('in if');
             if (req.body.breakfastType) {
                 const feederDb = await Feeder.create({
                     feed_date: new Date(),
@@ -173,7 +183,6 @@ router.post('/scheduler', async (req, res) => {
                 res.status(200).json(feederDb);
             }
         } else {
-            console.log('in else');
             if (req.body.breakfastType) {
                 const feederDb = await Feeder.update(
                     {
@@ -228,11 +237,8 @@ router.post('/scheduler', async (req, res) => {
 //Route to render the edit pet handlebar
 router.get('/profile:petId', async (req, res) => {
     try {
-        console.log("In edit==",req.params.petId);
         const petData = await Pet.findByPk(req.params.petId);
-        console.log(petData);
         const petfilteredData = petData.get({ plain: true });
-        console.log(petfilteredData);
         //const petData = petFeederData.map(pet => pet.get({ plain: true }));
         res.render('profile', {petfilteredData, loggedIn: req.session.loggedIn, sessionUserId: req.session.sessionUserId, sessionUserName: req.session.sessionUserName});
     }
