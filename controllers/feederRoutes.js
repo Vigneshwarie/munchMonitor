@@ -139,7 +139,6 @@ router.delete('/deletepet', async (req, res) => {
         const deleteFeeder = await Feeder.destroy({
             where: {
                 pet_id: req.body.petId,
-                feed_date: new Date(),
             }
         });
         if (deleteFeeder) {
