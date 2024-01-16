@@ -158,7 +158,7 @@ function cancelbuttonfunction(event) {
 
 // Function for Logout button
 function logoutfunction(event) {
-    window.location.replace("login");
+    window.location.replace("/");
 }
 
 // Loop to add edit event listener for all listed profile and edit functionality
