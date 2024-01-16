@@ -11,6 +11,7 @@ const dinnerbtn = document.querySelector('.dinnerbtn');
 const editpetbutton = document.querySelectorAll('.editpetbutton');
 
 const saveEditProfileBtn = document.querySelector('#saveEditProfileBtn');
+const logout = document.querySelector('.logoutbutton')
 
 // Sign-in functionality
 const checkLoginUser = async (event) => {
@@ -155,6 +156,11 @@ function cancelbuttonfunction(event) {
     window.location.replace("homepage");
 }
 
+// Function for Logout button
+function logoutfunction(event) {
+    window.location.replace("login");
+}
+
 // Loop to add edit event listener for all listed profile and edit functionality
 for (let i = 0; i < editpetbutton.length; i++) { 
     editpetbutton[i].addEventListener("click", async function (event) { 
@@ -265,4 +271,8 @@ if (lunchbtn) {
 
 if (dinnerbtn) {
     dinnerbtn.addEventListener('click', savedinnerfunction);
+}
+
+if (logout) {
+    logout.addEventListener('click', logoutfunction);
 }
